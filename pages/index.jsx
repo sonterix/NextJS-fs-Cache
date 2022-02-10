@@ -1,10 +1,8 @@
-import getCache from '../utils/cacheFunc'
-
 const Home = () => {
   return (
-    <div>
+    <section>
       <a href='/cache/data.json'>Check cache</a>
-    </div>
+    </section>
   )
 }
 
