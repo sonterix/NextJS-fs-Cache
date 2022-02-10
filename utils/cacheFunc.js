@@ -20,7 +20,7 @@ const getCache = async () => {
 
   // Caching the data
   try {
-    await fsWriteFile(`${pathToSave}/cms.json`, JSON.stringify(data))
+    await fsWriteFile(`${pathToSave}/data.json`, JSON.stringify(data))
     console.log(`Data is cached at ${pathToSave}`)
   } catch (error) {
     console.log(`Data is NOT cached. ${error}`)
