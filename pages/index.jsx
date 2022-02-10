@@ -1,6 +1,6 @@
 import getCache from '../utils/cacheFunc'
 
-const Cache = ({ lastUpdatedDate }) => <div>Last update: {JSON.stringify(Date(lastUpdatedDate))}</div>
+const Cache = ({ lastUpdatedDate }) => <div>Last update: {JSON.stringify(new Date(lastUpdatedDate))}</div>
 
 export const getStaticProps = async () => {
   await getCache()
