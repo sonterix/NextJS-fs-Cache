@@ -1,10 +1,8 @@
-import getCache from '../../utils/cacheFunc'
+import getCache from '../utils/cacheFunc'
 
-const updateCache = async (req, res) => {
+export default async function updateCache(req, res) {
   await getCache()
 
   res.statusCode = 200
   res.json({ status: 'success' })
 }
-
-export default updateCache
