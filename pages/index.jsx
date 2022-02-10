@@ -5,14 +5,13 @@ const Cache = ({ lastUpdatedDate }) => {
   return <div>Last update: {date?.toString() || 'Error on update'}</div>
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   await getCache()
 
   return {
     props: {
       lastUpdatedDate: Date.now()
-    },
-    revalidate: 160 // 3 min
+    }
   }
 }
 
