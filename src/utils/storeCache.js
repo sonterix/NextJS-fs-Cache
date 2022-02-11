@@ -13,11 +13,11 @@ const storeCache = async () => {
   }
 
   // Check or create cache folder
-  try {
-    fs.readdirSync(PATH_TO_CACHE)
-  } catch {
-    fs.mkdirSync(PATH_TO_CACHE)
-  }
+  // try {
+  //   fs.readdirSync(PATH_TO_CACHE)
+  // } catch {
+  //   fs.mkdirSync(PATH_TO_CACHE)
+  // }
 
   // Caching the data
   try {
