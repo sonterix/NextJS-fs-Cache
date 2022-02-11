@@ -9,7 +9,7 @@ const Home = ({ cache }) => {
 
 export const getStaticProps = async () => {
   await storeCache()
-  const cache = getCache()
+  const cache = await getCache()
 
   return {
     props: {

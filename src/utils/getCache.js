@@ -6,7 +6,7 @@ const PATH_TO_CACHE = 'public/cache'
 const FILE_NAME = 'data.json'
 const FULL_PATH = path.resolve(`${PATH_TO_CACHE}/${FILE_NAME}`)
 
-const getCache = () => {
+const getCache = async () => {
   let cacheData
 
   try {

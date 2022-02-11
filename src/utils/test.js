@@ -6,15 +6,17 @@ const CACHE_PATH = path.resolve('public/cache/data.json')
 const getCache = async () => {
   let cachedData
 
-  // try {
-  //   const existingData = fs.readFileSync(CACHE_PATH, 'utf8')
-  //   cachedData = JSON.parse(existingData)
-  // } catch (error) {
-  //   console.log('Cache not found')
-  // }
+  try {
+    const existingData = fs.readFileSync(CACHE_PATH, 'utf8')
+    cachedData = JSON.parse(existingData)
+  } catch (error) {
+    console.log('Cache not found')
+  }
 
   if (!cachedData) {
-    const data = Math.random()
+    const data = {
+      data: Math.random()
+    }
 
     try {
       fs.writeFileSync(CACHE_PATH, JSON.stringify(data), 'utf8')
@@ -23,8 +25,6 @@ const getCache = async () => {
       console.log('Error: Data is NOT cached')
       console.error(error)
     }
-
-    cachedData = data
   }
 
   return cachedData
