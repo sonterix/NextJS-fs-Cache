@@ -1,19 +1,15 @@
-const NodeCache = require('node-cache')
-const cache = new NodeCache()
+import { redis } from '../init/redis'
 
-export const storeCache = () => {
-  // Cache data
-  const data = {
-    number: Math.random()
-  }
+export const getCache = async key => {
+  const data = await redis.get(key)
 
-  const success = cache.set('data', data)
-
-  if (success) console.log('Data is cached')
-  else console.log('Error: Data is NOT cached')
+  if (!data) return null
+  return JSON.parse(data)
 }
 
-export const getCache = () => {
-  const data = cache.get('data')
-  return data
+export const setCache = async (key, data, expires = 0) => {
+  if (expires) await redis.set(key, JSON.stringify(data), 'EX', expires)
+  else await redis.set(key, JSON.stringify(data))
+
+  console.log('Data is cached!')
 }

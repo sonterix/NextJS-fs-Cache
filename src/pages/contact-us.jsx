@@ -1,24 +1,22 @@
-import { getCache, setCache } from '../utils/cache'
+import { getCache } from '../utils/cache'
 
-const Home = ({ cache }) => (
+const ContactUs = ({ cache }) => (
   <section>
-    <h1>Home Page</h1>
+    <h1>Contact Us Page</h1>
     <br />
     {cache && <p>Last update: {JSON.stringify(new Date(cache))}</p>}
   </section>
 )
 
 export const getStaticProps = async () => {
-  await setCache('lastUpdate', Date.now())
-
   const cache = await getCache('lastUpdate')
 
   return {
     props: {
       cache: cache || null
     },
-    revalidate: 60
+    revalidate: 160
   }
 }
 
-export default Home
+export default ContactUs
