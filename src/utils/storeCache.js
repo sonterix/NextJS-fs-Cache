@@ -4,6 +4,7 @@ import path from 'path'
 // Path to cache file
 const PATH_TO_CACHE = 'public/cache'
 const FILE_NAME = 'data.json'
+const FULL_PATH = path.resolve(`${PATH_TO_CACHE}/${FILE_NAME}`)
 
 const storeCache = async () => {
   // Cache data
@@ -20,14 +21,12 @@ const storeCache = async () => {
 
   // Caching the data
   try {
-    fs.writeFileSync(path.resolve(`${PATH_TO_CACHE}/${FILE_NAME}`), JSON.stringify(data), 'utf8')
+    fs.writeFileSync(FULL_PATH, JSON.stringify(data), 'utf8')
     console.log(`Data is cached at ${PATH_TO_CACHE}`)
   } catch (error) {
     console.log('Error: Data is NOT cached')
     console.error(error)
   }
-
-  return true
 }
 
 export default storeCache
