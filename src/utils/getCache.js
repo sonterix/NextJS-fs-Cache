@@ -5,7 +5,7 @@ import path from 'path'
 const PATH_TO_CACHE = 'public/cache'
 const FILE_NAME = 'data.json'
 
-const getCache = async () => {
+const getCache = () => {
   let cacheData
 
   try {
