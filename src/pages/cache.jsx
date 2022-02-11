@@ -8,6 +8,7 @@ export const getStaticProps = async () => {
   storeCache()
 
   return {
+    props: {},
     revalidate: 160
   }
 }
