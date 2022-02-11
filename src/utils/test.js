@@ -1,31 +1,27 @@
 import fs from 'fs'
 import path from 'path'
 
-function fetchMembersData() {
-  console.log('Fetching members data...')
-  return [{ email: 'test1@email.com' }, { email: 'test12@email.com' }, { random: Math.random() }]
-}
+const CACHE_PATH = path.resolve('public/cache/data.json')
 
-const MEMBERS_CACHE_PATH = path.resolve('public/cache/data.json')
-
-export default async function getMembers() {
+const getCache = async () => {
   let cachedData
 
-  try {
-    cachedData = JSON.parse(fs.readFileSync(MEMBERS_CACHE_PATH, 'utf8'))
-  } catch (error) {
-    console.log('Member cache not initialized')
-  }
+  // try {
+  //   const existingData = fs.readFileSync(CACHE_PATH, 'utf8')
+  //   cachedData = JSON.parse(existingData)
+  // } catch (error) {
+  //   console.log('Cache not found')
+  // }
 
   if (!cachedData) {
-    const data = fetchMembersData()
+    const data = Math.random()
 
     try {
-      fs.writeFileSync(MEMBERS_CACHE_PATH, JSON.stringify(data), 'utf8')
-      console.log('Wrote to members cache')
+      fs.writeFileSync(CACHE_PATH, JSON.stringify(data), 'utf8')
+      console.log(`Data is cached at ${CACHE_PATH}`)
     } catch (error) {
-      console.log('ERROR WRITING MEMBERS CACHE TO FILE')
-      console.log(error)
+      console.log('Error: Data is NOT cached')
+      console.error(error)
     }
 
     cachedData = data
@@ -33,3 +29,5 @@ export default async function getMembers() {
 
   return cachedData
 }
+
+export default getCache

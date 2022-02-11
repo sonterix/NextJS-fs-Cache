@@ -1,17 +1,17 @@
-import getMembers from '../utils/test'
+import getCache from '../utils/test'
 
-const Home = ({ members }) => {
-  console.log(members)
+const Home = ({ cache }) => {
+  console.log(cache)
 
-  return <section>Test</section>
+  return <section>{JSON.stringify(cache)}</section>
 }
 
 export const getStaticProps = async () => {
-  const members = await getMembers()
+  const cache = await getCache()
 
   return {
     props: {
-      members
+      cache
     },
     revalidate: 60
   }
