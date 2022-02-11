@@ -1,4 +1,5 @@
-import getCache from '../utils/test'
+import storeCache from '../utils/storeCache'
+import getCache from '../utils/getCache'
 
 const Home = ({ cache }) => {
   console.log(cache)
@@ -7,7 +8,8 @@ const Home = ({ cache }) => {
 }
 
 export const getStaticProps = async () => {
-  const cache = await getCache()
+  await storeCache()
+  const cache = getCache()
 
   return {
     props: {
