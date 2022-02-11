@@ -1,11 +1,7 @@
 const NodeCache = require('node-cache')
+const cache = new NodeCache()
 
-export const initCache = () => {
-  const cache = new NodeCache()
-  return cache
-}
-
-export const storeCache = cache => {
+export const storeCache = () => {
   // Cache data
   const data = {
     number: Math.random()
@@ -17,7 +13,7 @@ export const storeCache = cache => {
   else console.log('Error: Data is NOT cached')
 }
 
-export const getCache = cache => {
+export const getCache = () => {
   const data = cache.get('data')
   return data
 }

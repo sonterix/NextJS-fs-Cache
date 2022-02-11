@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import { getCache, storeCache } from '../utils/cache'
+import { getCache } from '../utils/cache'
 
-const Home = ({ cache }) => (
+const About = ({ cache }) => (
   <>
     <nav>
       <ul>
         <li>
-          <Link href='/about'>About</Link>
+          <Link href='/'>Home</Link>
         </li>
       </ul>
     </nav>
@@ -15,17 +15,15 @@ const Home = ({ cache }) => (
   </>
 )
 
-export const getStaticProps = async () => {
-  storeCache()
-
+export const getStaticProps = () => {
   const cache = getCache()
 
   return {
     props: {
-      cache
+      cache: cache || null
     },
-    revalidate: 60
+    revalidate: 120
   }
 }
 
-export default Home
+export default About
